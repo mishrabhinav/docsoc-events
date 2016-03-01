@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mishrabhinav/docsoc-events/issues"
   },
-  "homepage": "https://github.com/mishrabhinav/docsoc-events#readme"
+  "homepage": "https://github.com/mishrabhinav/docsoc-events#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
