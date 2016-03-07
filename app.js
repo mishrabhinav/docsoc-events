@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -12,6 +13,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -56,5 +58,21 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-module.exports = app;
+//HTTP Server
+var server = http.createServer(app);
+var boot = function () {
+  server.listen(app.get('port'), function(){
+    console.info('Express server listening on port ' + app.get('port'));
+  });
+}
+var shutdown = function () {
+	server.close();
+}
+if (require.main === module) {
+	boot();
+} else {
+  console.info('Running app as a module')
+  exports.boot = boot;
+  exports.shutdown = shutdown;
+  exports.port = app.get('port');
+}
