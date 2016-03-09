@@ -5,8 +5,8 @@ var db = require('mongoose');
 var Events = db.model('Events');
 
 /* GET users listing. */
-router
-  .get('/', function(req, res, next) {
+router.route('/')
+  .get(function(req, res) {
     var query = Events.find({}).select();
     query.exec(function(err, events) {
       if(err) {
@@ -17,8 +17,9 @@ router
       }
     });
   })
-  .post('/', function(req, res, next) {
-    var event = new Events(req.body);
+  .post(function(req, res) {
+    console.log(req.query);
+    var event = new Events(req.query);
     event.save(function(err){
       if(err) {
 	res.status(500).json(err);

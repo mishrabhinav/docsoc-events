@@ -6,10 +6,10 @@ db.model('Events', new Schema({
   place: String,
   date: Date,
   description: String
-//  organiser: {
-//    type: Schema.Types.ObjectId, 
-//    ref: 'User'
-//  } 
+  organiser: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
+  } 
 }));
 
 db.model('User', new Schema({
