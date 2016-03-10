@@ -18,8 +18,7 @@ router.route('/')
     });
   })
   .post(function(req, res) {
-    console.log(req.query);
-    var event = new Events(req.query);
+    var event = new Events(req.body);
     event.save(function(err){
       if(err) {
 	res.status(500).json(err);
