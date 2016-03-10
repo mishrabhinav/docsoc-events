@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/node,vim,osx
 
+### Idea ###
+.idea/
+
 ### Node ###
 # Logs
 logs

@@ -4,7 +4,6 @@ var router = express.Router();
 var db = require('mongoose');
 var Events = db.model('Events');
 
-/* GET users listing. */
 router.route('/')
   .get(function(req, res) {
     var query = Events.find({}).select();

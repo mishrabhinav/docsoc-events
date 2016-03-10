@@ -5,7 +5,7 @@ db.model('Events', new Schema({
   name: String,
   place: String,
   date: Date,
-  description: String
+  description: String,
   organiser: {
     type: Schema.Types.ObjectId, 
     ref: 'User'
