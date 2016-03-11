@@ -15,4 +15,5 @@ db.model('Events', new Schema({
 db.model('User', new Schema({
   shortcode: String,
   name: String,
+  password: String
 }));
