@@ -19,16 +19,18 @@ router.route('/')
   })
   .post(function(req, res) {
     var userData =  req.body;
-    var salt = bcrypt.genSaltSync(10);
-    userData.password = bcrypt.hashSync(userData.password, salt);
-    console.log(userData);
-    var newUser = new User(userData);
-    newUser.save(function(err) {
-      if(err) {
-        res.status(500).json(err);
-      } else {
-        res.redirect('/');
-      }
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(userData.password, salt, function(err, hash) {
+        userData.password = hash;
+        var newUser = new User(userData);
+        newUser.save(function(err) {
+          if(err) {
+            res.status(500).json(err);
+          } else {
+            res.redirect('/');
+          }
+        })
+      })
     })
   })
 
