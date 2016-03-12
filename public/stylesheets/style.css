@@ -1,8 +1,28 @@
 body {
-//  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #eff1f4;
 }
 
 a {
   color: #00B7FF;
+}
+
+.event-welcome {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: #fff;
+  background-color: #1e5491;
+}
+
+#event-intro{
+       position: relative;
+       bottom: 80px;
+       z-index: 500;
+ //      opacity: 0.6;
+}
+
+#event-intro > .row {
+       min-height: 400px;
+//       background: #cccccc;
 }

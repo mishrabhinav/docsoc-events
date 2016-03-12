@@ -1,16 +1,19 @@
 extends layout
 
 block content
-  .jumbotron
+  .event-welcome
     .container
       h1 Welcome to the Events Page!
       p
         | All the events will be displayed here.
-  .col-md-6
-    .well
-      .container
-        h3 {{Event Title}}
-        h4 {{Event Place}}
-        h4 {{Event Date}}
-        h4 {{Event Description}}
-        h4 {{Event Organiser}}
+      br
+  div(class='container', id='event-intro')
+    .row
+      div(class='col-md-10 col-md-offset-1')      
+        .well
+          .container
+            h3 {{Event Title}}
+            h4 {{Event Place}}
+            h4 {{Event Date}}
+            h4 {{Event Description}}
+            h4 {{Event Organiser}}

@@ -16,7 +16,7 @@ var db = mongoose.connect(process.env.DB_CONN);
 require('./db/models');
 
 // Routing
-var routes = require('./routes/index');
+var page_login = require('./routes/index');
 var page_events = require('./routes/events');
 var api_users = require('./routes/api/users');
 var api_events = require('./routes/api/events');
@@ -29,7 +29,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -57,8 +57,8 @@ passport.use(new LocalStrategy(
 
 
 // Routing
-app.use('/', routes);
-app.use('/events', page_events)
+app.use('/login', page_login);
+app.use('/', page_events)
 app.use('/api/users', api_users);
 app.use('/api/events', api_events);
 
