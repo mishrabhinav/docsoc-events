@@ -15,9 +15,11 @@ require('dotenv').config();
 var db = mongoose.connect(process.env.DB_CONN);
 require('./db/models');
 
+// Routing
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var events = require('./routes/events');
+var page_events = require('./routes/events');
+var api_users = require('./routes/api/users');
+var api_events = require('./routes/api/events');
 
 var app = express();
 
@@ -34,10 +36,31 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// User Database
+var User = mongoose.model('User');
+
+// Passport Authentication
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({shotcode: username}, function(err, user) {
+      if(err) {
+        return done(err);
+      } else if (!user) {
+        return done(null, false, { message: 'Incorrect Username' });
+      } else if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect Password' });
+      } else {
+        return done(null, user);
+      }
+    });
+}));
+
+
 // Routing
 app.use('/', routes);
-app.use('/api/users', users);
-app.use('/api/events', events);
+app.use('/events', page_events)
+app.use('/api/users', api_users);
+app.use('/api/events', api_events);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
