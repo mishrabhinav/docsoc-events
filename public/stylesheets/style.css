@@ -4,7 +4,11 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #fff; //#00B7FF;
+}
+
+.docsoc-logo {
+  width: 150px;
 }
 
 .event-welcome {
@@ -17,12 +21,10 @@ a {
 
 #event-intro{
        position: relative;
-       bottom: 80px;
+       bottom: 70px;
        z-index: 500;
- //      opacity: 0.6;
 }
 
 #event-intro > .row {
        min-height: 400px;
-//       background: #cccccc;
 }
