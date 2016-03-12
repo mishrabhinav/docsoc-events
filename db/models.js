@@ -15,7 +15,10 @@ var eventSchema =  new Schema({
 db.model('Events', eventSchema);
 
 var userSchema =  new Schema({
-                   shortcode: String,
+                   shortcode: {
+                     type: String,
+                     unique: true
+                   },
                    name: String,
                    password: String
                  });
