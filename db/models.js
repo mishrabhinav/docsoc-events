@@ -8,9 +8,9 @@ var eventSchema =  new Schema({
                      date: Date,
                      description: String,
                      organiser: {
-                       type: Schema.Types.ObjectId, 
+                       type: Schema.Types.ObjectId,
                        ref: 'User'
-                     } 
+                     }
                    });
 db.model('Events', eventSchema);
 
