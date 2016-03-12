@@ -3,9 +3,13 @@ extends layout
 block content
   .event-welcome
     .container
-      h1 Welcome to the Events Page!
-      p
-        | All the events will be displayed here.
+      .row
+        div(class='col-md-2 col-md-offset-5')
+          img(class='center-block docsoc-logo' src='images/docsoc-logo.png')
+      br
+      .row
+        div(class='col-md-8 col-md-offset-1')
+          include includes/menu
       br
   div(class='container', id='event-intro')
     .row
