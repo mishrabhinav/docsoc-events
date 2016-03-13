@@ -1,11 +1,19 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #eff1f4;
-  overflow-x: hidden;
 }
 
 a {
-  color: #fff; //#00B7FF;
+  color: #fff;
+}
+
+a.credit {
+  color: #1e5491;
+}
+
+.div-center{
+    float: none;
+    margin: 0 auto;
 }
 
 .docsoc-logo {
@@ -27,7 +35,6 @@ a {
 }
 
 #event-intro > .row {
-       min-height: 400px;
        margin-left: -15px;
        margin-right: -15px;
 }
