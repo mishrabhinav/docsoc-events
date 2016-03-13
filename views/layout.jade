@@ -5,4 +5,19 @@ html
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    .event-welcome
+       .container
+         .row
+           div(class='col-md-2 col-md-offset-5')
+             img(class='center-block docsoc-logo' src='images/docsoc-logo.png')
+         br
+         .row
+           div(class='col-md-8 col-md-offset-1')
+             include includes/menu
+         br
+      div(class='container', id='event-intro')
+       .row
+          div(class='col-md-10 col-md-offset-1')      
+            .well
+              .container 
+                block content
