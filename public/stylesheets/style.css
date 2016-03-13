@@ -1,6 +1,7 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #eff1f4;
+  overflow-x: hidden;
 }
 
 a {
@@ -27,4 +28,6 @@ a {
 
 #event-intro > .row {
        min-height: 400px;
+       margin-left: -15px;
+       margin-right: -15px;
 }
