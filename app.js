@@ -16,7 +16,7 @@ var db = mongoose.connect(process.env.DB_CONN);
 require('./db/models');
 
 // Routing
-var page_login = require('./routes/index');
+var page_login = require('./routes/login');
 var page_events = require('./routes/events');
 var api_users = require('./routes/api/users');
 var api_events = require('./routes/api/events');
