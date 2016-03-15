@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .col-md-4.div-center
+    form(action="/login", method="POST")
+      p
+        input.form-control(name="shortcode", type="text", placeholder="College Login")
+      p
+        input.form-control(name="password", type="password", placeholder="Password")
+      p
+        button.btn.btn-lg.btn-primary.btn-block(type="submit") Log in

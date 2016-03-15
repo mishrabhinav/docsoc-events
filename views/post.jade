@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .col-md-4.div-center
+    form(action="/post", method="POST")
+      p
+        input.form-control(name="name", type="text", placeholder="Event Name")
+      p
+        input.form-control(name="place", type="text", placeholder="Event Venue")
+      p
+        input.form-control(name="date", type="text", placeholder="Date")
+      p
+        input.form-control(name="description", type="text", placeholder="Description")
+     p
+        button.btn.btn-lg.btn-primary.btn-block(type="submit") Create Event
