@@ -58,6 +58,7 @@ passport.use(new LocalStrategy(
 
 // Page Routing
 app.use('/login', page_login);
+app.use('/logout', page_login);
 app.use('/', page_events)
 app.use('/manage', page_events);
 
