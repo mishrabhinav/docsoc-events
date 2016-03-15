@@ -3,15 +3,13 @@
     li(class=(menu === 'events')?'active':'')
       a(href='/') Home
 
-    if (admin || menu ==='manage' || menu==='post')
-      li(class=(menu === 'manage')?'active':'')
-        a(href="/manage") Manage
-      li(class=(menu === 'post')?'active':'')
-        a(href="/post") Post
-      li
-        a(href="/logout") Log out
+    li(class=(menu === 'manage')?'active':'')
+      a(href="/manage") Manage
+    li(class=(menu === 'post')?'active':'')
+      a(href="/post") Post
+    li
+      a(href="/logout") Log out
 
-    else
-      li(class=(menu === 'login')?'active':'')
-        a(href='/login') Login
+    li(class=(menu === 'login')?'active':'')
+      a(href='/login') Login
 
