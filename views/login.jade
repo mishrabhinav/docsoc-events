@@ -1,5 +1,8 @@
 extends layout
 
+block page
+  - var menu = 'login'
+
 block content
   .col-md-4.div-center
     form(action="/login", method="POST")
