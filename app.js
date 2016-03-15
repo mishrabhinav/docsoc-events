@@ -56,9 +56,12 @@ passport.use(new LocalStrategy(
 }));
 
 
-// Routing
+// Page Routing
 app.use('/login', page_login);
 app.use('/', page_events)
+app.use('/manage', page_events);
+
+// API Routing
 app.use('/api/users', api_users);
 app.use('/api/events', api_events);
 
