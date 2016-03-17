@@ -4,8 +4,9 @@ block page
   - var menu = 'events'
 block content
   h1 Welcome to DoCSoc Events
-  h3 {{Event Title}}
-  h4 {{Event Place}}
-  h4 {{Event Date}}
-  h4 {{Event Description}}
-  h4 {{Event Organiser}}
+  .row(ng-repeat='e in events')
+    h3 {{e.title}}
+    h4 {{e.place}}
+    h4 {{e.date}}
+    h4 {{e.description}}
+    h4 Event Organiser

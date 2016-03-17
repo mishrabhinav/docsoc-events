@@ -1,9 +1,11 @@
 doctype html
-html
+html(ng-app='eventsApp')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/angular.js')
+    script(src='/javascripts/app.js')
   body
     block page
     .event-welcome
@@ -18,7 +20,7 @@ html
          br
       div(class='container', id='event-intro')
        .row
-          .well.col-md-10.div-center
+          .well.col-md-10.div-center(ng-controller='eventsCtrl')
             block content
           br
           p.text-center
