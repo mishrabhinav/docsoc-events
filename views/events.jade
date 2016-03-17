@@ -7,10 +7,10 @@ block content
   .col-md-12.div-center
     .row.event-info(ng-repeat="e in events | orderBy:orderProp")
       .col-md-10
-        h3 {{e.name}}
+        h3 #[a(href='/events/{{e.slug}}') {{e.name}}]
         h4 {{e.place}}
         h4 {{e.date}}
-        h4 {{e.description}}
+        p {{e.description}}
       .col-md-2
         .btn-group-vertical
           .btn.btn-primary Sign Up

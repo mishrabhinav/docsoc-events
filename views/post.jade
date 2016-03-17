@@ -7,6 +7,8 @@ block content
     .col-md-6
       form(action="/api/events", method="POST")
         p
+          input.form-control(name="slug", type="text", placeholder="Slug")
+        p
           input.form-control(name="name", type="text", placeholder="Event Name")
         p
           input.form-control(name="place", type="text", placeholder="Event Venue")
