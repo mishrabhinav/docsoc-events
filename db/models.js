@@ -3,6 +3,7 @@ var Schema = db.Schema;
 var bcrypt = require('bcrypt');
 
 var eventSchema =  new Schema({
+                     slug: String,
                      name: String,
                      place: String,
                      date: Date,

@@ -16,10 +16,9 @@ var db = mongoose.connect(process.env.DB_CONN);
 require('./db/models');
 
 // Routing
-var page_login = require('./routes/login');
-var page_events = require('./routes/events');
-var api_users = require('./routes/api/users');
-var api_events = require('./routes/api/events');
+var login = require('./routes/login');
+var events = require('./routes/events');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -57,14 +56,15 @@ passport.use(new LocalStrategy(
 
 
 // Page Routing
-app.use('/login', page_login);
-app.use('/logout', page_login);
-app.use('/', page_events)
-app.use('/manage', page_events);
+app.use('/login', login);
+app.use('/logout', login);
+app.use('/', events)
+app.use('/manage', events);
+app.use('/events/:slug', events);
 
 // API Routing
-app.use('/api/users', api_users);
-app.use('/api/events', api_events);
+app.use('/api/users', users);
+app.use('/api/events', events);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
