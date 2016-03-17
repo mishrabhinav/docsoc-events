@@ -1,0 +1,18 @@
+extends layout
+
+block page
+block content
+  .col-md-12.div-center
+    .row.event-info
+      .col-md-10
+        h3= name
+        h4= place
+        h4= date
+        p= description
+      .col-md-2
+        .btn-group-vertical
+          .btn.btn-primary Sign Up
+          .btn.btn-success Start Event
+          .btn.btn-warning Edit
+          .btn.btn-danger Delete
+        
