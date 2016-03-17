@@ -4,9 +4,17 @@ block page
   - var menu = 'events'
 block content
   h1 Welcome to DoCSoc Events
-  .row(ng-repeat='e in events')
-    h3 {{e.title}}
-    h4 {{e.place}}
-    h4 {{e.date}}
-    h4 {{e.description}}
-    h4 Event Organiser
+  .col-md-12.div-center
+    .row.event-info(ng-repeat="e in events | orderBy:orderProp")
+      .col-md-10
+        h3 {{e.name}}
+        h4 {{e.place}}
+        h4 {{e.date}}
+        h4 {{e.description}}
+      .col-md-2
+        .btn-group-vertical
+          .btn.btn-primary Sign Up
+          .btn.btn-success Start Event
+          .btn.btn-warning Edit
+          .btn.btn-danger Delete
+        
