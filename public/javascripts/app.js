@@ -6,5 +6,21 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   $http.get('/api/events')
     .success(function(data){
       $scope.events = data;
-    })
+    });
+
+  $scope.startSignUp = function (slug) {
+
+  };
+
+  $scope.startEvent = function (slug) {
+
+  };
+
+  $scope.editEvent = function (slug) {
+
+  };
+
+  $scope.deleteEvent = function (slug) {
+
+  };
 }]);
