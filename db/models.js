@@ -3,10 +3,23 @@ var Schema = db.Schema;
 var bcrypt = require('bcrypt');
 
 var eventSchema =  new Schema({
-                     slug: String,
-                     name: String,
-                     place: String,
-                     date: Date,
+                     slug: {
+                       type: String,
+                       required: true,
+                       unique: true
+                     },
+                     name: {
+                       type: String,
+                       required: true
+                     },
+                     place: {
+                       type: String,
+                       required: true
+                     },
+                     date: {
+                       type: Date,
+                       required: true
+                     },
                      description: String,
                      organiser: {
                        type: Schema.Types.ObjectId,
