@@ -7,15 +7,17 @@ block content
     .col-md-6
       form(action="/api/events", method="POST")
         p
-          input.form-control(name="slug", type="text", placeholder="Slug")
+          input.form-control(name="slug", type="text", placeholder="Slug", required)
         p
-          input.form-control(name="name", type="text", placeholder="Event Name")
+          input.form-control(name="name", type="text", placeholder="Event Name", required)
         p
-          input.form-control(name="place", type="text", placeholder="Event Venue")
+          input.form-control(name="place", type="text", placeholder="Event Venue", required)
         p
-          input.form-control(name="date", type="text", placeholder="Date")
+          input.form-control(name="date", type="text", placeholder="Date", required)
         p
           textarea.form-control(name="description", type="text", placeholder="Description")
+        p
+          input.form-control(name='image', type='file')
         p
           button.btn.btn-lg.btn-primary.btn-block(type="submit") Create Event
     .col-md-6

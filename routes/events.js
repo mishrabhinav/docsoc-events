@@ -35,7 +35,7 @@ router.get('/events/:slug', function(req, res, next) {
       res.status(500).json(err);
       return;
     } else {
-      event.title = event.name;
+      event.title = 'DoCSoc | ' + event.name;
       res.render('event', event);
     }
   });
