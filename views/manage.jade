@@ -7,15 +7,18 @@ block content
     table.table.table-stripped
        thead
          tr
-           th(width='60%') Event
-           th(width='20%')
-           th(width='20%')
+           th(width='70%') Event
+           th(width='10%')
+           th(width='10%')
+           th(width='10%')
            tr(ng-repeat='e in events')
              td 
-               {{e.name}}
+               h5 {{e.name}}
              td
-               .btn.btn-success Edit
+               .btn.btn-success.btn-manage(ng-click='startEvent(e.slug)') Start
              td
-               .btn.btn-danger Delete
+               .btn.btn-warning.btn-manage(ng-click='editEvent(e.slug)') Edit
+             td
+               .btn.btn-danger.btn-manage(ng-click='deleteEvent(e.slug)') Delete
        tbody
             
