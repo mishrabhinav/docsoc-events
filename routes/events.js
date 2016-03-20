@@ -41,6 +41,41 @@ router.get('/events/:slug', function(req, res, next) {
   });
 });
 
+router.get('/events/:slug/edit', function(req, res, next) {
+  var query = Events.findOne({slug: req.params.slug}).select();
+  query.exec(function(err, event) {
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      event.title = 'DoCSoc | Edit Event';
+      res.render('edit', event);
+    }
+  });
+});
+
+/*
+ * UPDATE EVent
+ */
+router.post('/events/:slug/update', function(req, res, next) {
+  console.log(req);
+  var update = {slug: req.body.slug,
+                name: req.body.name,
+                place: req.body.place,
+                date: req.body.date,
+                description: req.body.description
+               } 
+  Events.findOneAndUpdate({slug: req.params.slug}, update, function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      event.title = 'DoCSoc | ' + event.name;
+      res.render('event', event);
+    }
+  });
+});
+
 
 /*
  * API Routes

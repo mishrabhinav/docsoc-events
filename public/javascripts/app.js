@@ -17,7 +17,7 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.editEvent = function (slug) {
-
+    window.location.href='/events/' + slug + '/edit'; 
   };
 
   $scope.deleteEvent = function (slug) {

@@ -61,6 +61,8 @@ app.use('/logout', login);
 app.use('/', events)
 app.use('/manage', events);
 app.use('/events/:slug', events);
+app.use('/events/:slug/update', events);
+app.use('/events/:slug/edit', events);
 
 // API Routing
 app.use('/api/users', users);
