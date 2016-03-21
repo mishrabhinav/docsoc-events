@@ -24,9 +24,34 @@ var eventSchema =  new Schema({
                      organiser: {
                        type: Schema.Types.ObjectId,
                        ref: 'User'
-                     }
+                     },
+                     signUpOpen: {
+                       type: Boolean,
+                       default: false 
+                     },
+                     signUpList: [{
+                       type: Schema.Types.ObjectId,
+                       ref: 'SignUpUser'
+                     }]
                    });
 db.model('Events', eventSchema);
+
+var signUpSchema = new Schema({
+                     shortcode: {
+                       type: String,
+                       required: true
+                     },
+                     name: {
+                       type: String,
+                       required: true
+                     },
+                     year: {
+                       type: String,
+                       required: true
+                     }
+                   });
+db.model('SignUpUser', signUpSchema);
+
 
 var userSchema =  new Schema({
                    shortcode: {
