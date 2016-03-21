@@ -7,13 +7,13 @@ block content
   .col-md-12.div-center
     .row.event-info(ng-repeat="e in events | orderBy:orderProp")
       .col-md-10
-        h3 #[a.lnk(href='/events/{{e.slug}}') {{e.name}}]
+        h3 #[a.lnk(href='/{{e.slug}}') {{e.name}}]
         h4 {{e.place}}
         h4 {{e.date}}
         p {{e.description}}
       .col-md-2
         .btn-group-vertical
-          .btn.btn-primary(ng-click='startSignUp(e.slug)') Sign Up
+          .btn.btn-primary(ng-click='signUp(e.slug)') Sign Up
           .btn.btn-success(ng-click='startEvent(e.slug)') Start Event
           .btn.btn-warning(ng-click='editEvent(e.slug)') Edit
           .btn.btn-danger(ng-click='deleteEvent(e.slug)') Delete
