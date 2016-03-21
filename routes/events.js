@@ -28,7 +28,7 @@ router.get('/post', function(req, res, next) {
 /*
  * GET Single Event
  */
-router.get('/events/:slug', function(req, res, next) {
+router.get('/:slug', function(req, res, next) {
   var query = Events.findOne({slug: req.params.slug}).select();
   query.exec(function(err, event){
     if(err) {
@@ -41,7 +41,7 @@ router.get('/events/:slug', function(req, res, next) {
   });
 });
 
-router.get('/events/:slug/edit', function(req, res, next) {
+router.get('/:slug/edit', function(req, res, next) {
   var query = Events.findOne({slug: req.params.slug}).select();
   query.exec(function(err, event) {
     if(err) {
@@ -57,8 +57,7 @@ router.get('/events/:slug/edit', function(req, res, next) {
 /*
  * UPDATE EVent
  */
-router.post('/events/:slug/update', function(req, res, next) {
-  console.log(req);
+router.post('/:slug/update', function(req, res, next) {
   var update = {slug: req.body.slug,
                 name: req.body.name,
                 place: req.body.place,
@@ -76,6 +75,12 @@ router.post('/events/:slug/update', function(req, res, next) {
   });
 });
 
+/*
+ * Event Sign Up Page
+ */
+router.get('/:slug/signup', function(req, res, next) {
+  res.render('signup', {title: 'DoCSoc | Sign Up'});
+});
 
 /*
  * API Routes
@@ -93,7 +98,9 @@ router.route('/api/events')
     });
   })
   .post(function(req, res) {
-    var event = new Events(req.body);
+    var entry = req.body;
+    entry.slug = entry.slug.split(' ').join('-');
+    var event = new Events(entry);
     event.save(function(err){
       if(err) {
 	res.status(500).json(err);
