@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/node,vim,osx
 
+### Tmux ###
+dev-tmux
+
 ### Idea ###
 .idea/
 

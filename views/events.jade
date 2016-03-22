@@ -5,7 +5,7 @@ block page
 block content
   h1 Welcome to DoCSoc Events
   .col-md-12.div-center
-    .row.event-info(ng-repeat="e in events | orderBy:orderProp")
+    .row.event-info(ng-repeat="e in events | orderBy:'-date'")
       .col-md-10
         h3 #[a.lnk(href='/{{e.slug}}') {{e.name}}]
         h4 {{e.place}}
