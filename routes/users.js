@@ -18,20 +18,14 @@ router.route('/')
     })
   })
   .post(function(req, res) {
-    var userData =  req.body;
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(userData.password, salt, function(err, hash) {
-        userData.password = hash;
-        var newUser = new User(userData);
-        newUser.save(function(err) {
-          if(err) {
-            res.status(500).json(err);
-          } else {
-            res.redirect('/');
-          }
-        })
-      })
-    })
-  })
+    User.register(new User({username: req.body.username, name: req.body.name}),
+                   req.body.password, function(err, user){
+                     if(err) {
+                       res.status(500).json(err);
+                     } else {
+                       res.render('events', {title: 'DoCSoc | Events'});
+                     }
+                   })
+ })
 
 module.exports = router;

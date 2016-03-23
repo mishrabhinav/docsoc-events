@@ -9,7 +9,7 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
     });
 
   $scope.signUp = function (slug) {
-    window.location.href='/' + slug + '/signup';
+    window.location.href='/events/' + slug + '/signup';
   };
 
   $scope.startEvent = function (slug) {
@@ -17,7 +17,7 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.editEvent = function (slug) {
-    window.location.href='/' + slug + '/edit'; 
+    window.location.href='/events/' + slug + '/edit'; 
   };
 
   $scope.deleteEvent = function (slug) {

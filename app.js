@@ -5,6 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var http = require('http');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -33,36 +34,26 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // User Database
 var User = mongoose.model('User');
 
 // Passport Authentication
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({shotcode: username}, function(err, user) {
-      if(err) {
-        return done(err);
-      } else if (!user) {
-        return done(null, false, { message: 'Incorrect Username' });
-      } else if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect Password' });
-      } else {
-        return done(null, user);
-      }
-    });
-}));
-
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser);
+passport.deserializeUser(User.deserializeUser);
 
 // Page Routing
+app.use('/', events)
 app.use('/login', login);
 app.use('/logout', login);
-app.use('/', events)
 app.use('/manage', events);
-app.use('/:slug', events);
-app.use('/:slug/update', events);
-app.use('/:slug/edit', events);
+app.use('/events/:slug', events);
+app.use('/events/:slug/update', events);
+app.use('/events/:slug/edit', events);
 
 // API Routing
 app.use('/api/users', users);
