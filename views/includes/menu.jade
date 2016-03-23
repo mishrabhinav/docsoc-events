@@ -2,14 +2,13 @@
   ul.nav.nav-pills
     li(class=(menu === 'events')?'active':'')
       a(href='/') Home
-
-    li(class=(menu === 'manage')?'active':'')
-      a(href="/manage") Manage
-    li(class=(menu === 'post')?'active':'')
-      a(href="/post") Post
-    li
-      a(href="/logout") Log out
-
-    li(class=(menu === 'login')?'active':'')
-      a(href='/login') Login
-
+    if(user)
+      li(class=(menu === 'manage')?'active':'')
+        a(href="/manage") Manage
+      li(class=(menu === 'post')?'active':'')
+        a(href="/post") Post
+      li
+        a(href="/logout") Log out
+    else
+      li(class=(menu === 'login')?'active':'')
+        a(href='/login') Login

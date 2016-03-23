@@ -8,7 +8,7 @@ block content
     br
   .row
     .col-md-6
-      form(action="/"+ slug +"/update", method="POST")
+      form(action="/events/"+ slug +"/update", method="POST")
         p
           input.form-control(name="slug", type="text", placeholder="Slug", value= slug,required)
         p

@@ -2,7 +2,7 @@ extends layout
 
 block content
   .col-md-4.div-center
-    form(action="/" + slug + "/signup", method="POST")
+    form(action="/events/" + slug + "/signup", method="POST")
       p
         input.form-control(name="shortcode", type="text", placeholder="College Login")
       p
