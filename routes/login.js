@@ -12,9 +12,9 @@ router.get('/', function(req, res, next) {
 /*
  * POST login page.
  */
-router.post('/', passport.authenticate('local'), function(req, res){
+router.post('/', /*passport.authenticate('local'),*/ function(req, res){
   res.redirect('/manage');
-})
+});
 
 
 router.get('/logout', function(req, res, next) {

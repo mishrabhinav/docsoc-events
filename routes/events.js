@@ -15,14 +15,14 @@ router.get('/', function(req, res, next) {
 /*
  * GET Manage page.
  */
-router.get('/manage', passport.authenticate('local'), function(req, res, next) {
+router.get('/manage',/* passport.authenticate('local'),*/ function(req, res, next) {
   res.render('manage', {title: 'DoCSoc | Manage Events'});
 });
 
 /*
  * GET Post page.
  */
-router.get('/post', passport.authenticate('local'), function(req, res, next) {
+router.get('/post',/* passport.authenticate('local'),*/ function(req, res, next) {
   res.render('post', {title: 'DoCSoc | Create Event'});
 });
 
@@ -42,7 +42,7 @@ router.get('/events/:slug', function(req, res, next) {
   });
 });
 
-router.get('/events/:slug/edit', passport.authenticate('local'), function(req, res, next) {
+router.get('/events/:slug/edit', function(req, res, next) {
   var query = Events.findOne({slug: req.params.slug}).select();
   query.exec(function(err, event) {
     if(err) {
@@ -56,15 +56,15 @@ router.get('/events/:slug/edit', passport.authenticate('local'), function(req, r
 });
 
 /*
- * UPDATE EVent
+ * UPDATE Event
  */
-router.post('/events/:slug/update', passport.authenticate('local'), function(req, res, next) {
+router.post('/events/:slug/update', function(req, res, next) {
   var update = {slug: req.body.slug,
                 name: req.body.name,
                 place: req.body.place,
                 date: req.body.date,
                 description: req.body.description
-               } 
+               }
   Events.findOneAndUpdate({slug: req.params.slug}, update, function(err, event){
     if(err) {
       res.status(500).json(err);
@@ -98,7 +98,7 @@ router.route('/api/events')
       }
     });
   })
-  .post(passport.authenticate('local'), function(req, res) {
+  .post(/*passport.authenticate('local'),*/ function(req, res) {
     var entry = req.body;
     entry.slug = entry.slug.split(' ').join('-');
     var event = new Events(entry);
@@ -112,5 +112,83 @@ router.route('/api/events')
     });
   })
 
+/*
+ * GET Event
+ */
+router.get('/api/events/:slug', function(req, res){
+ var query = Events.findOne({slug: req.params.slug}).select();
+  query.exec(function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      res.json(event);
+    }
+  });
+});
+
+/*
+ * UPDATE Event
+ */
+router.post('/api/events/:slug', function(req, res){
+  var update = {  slug: req.body.slug,
+                  name: req.body.name,
+                  place: req.body.place,
+                  date: req.body.date,
+                  description: req.body.description
+               }
+  Events.findOneAndUpdate({slug: req.params.slug}, update, function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      event.title = 'DoCSoc | ' + event.name;
+      res.render('event', event);
+    }
+  });
+})
+
+/*
+ * Start Event Sign Up
+ */
+router.get('/api/events/:slug/start', function(req, res){
+  Events.findOneAndUpdate({slug: req.params.slug}, {$set: {signUpOpen: true}}, function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      res.json(event.signUpOpen);
+    }
+  });
+});
+
+/*
+ * End Event Sign Up
+ */
+router.get('/api/events/:slug/end', function(req, res){
+  Events.findOneAndUpdate({slug: req.params.slug}, {$set: {signUpOpen: false}}, function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      res.json(event.signUpOpen);
+    }
+  });
+});
+
+/*
+ *  Get Event State
+ */
+router.get('/api/events/:slug/state', function(req, res){
+  Events.findOne({slug: req.params.slug}, function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      res.json(event.signUpOpen);
+    }
+  });
+ 
+});
 
 module.exports = router;
