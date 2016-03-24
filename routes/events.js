@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('mongoose');
 var Events = db.model('Events');
+var SignUpUser = db.model('SignUpUser');
 var passport = require('passport');
 
 
@@ -113,40 +114,36 @@ router.route('/api/events')
   })
 
 /*
- * GET Event
+ * GET and UPDATE Event
  */
-router.get('/api/events/:slug', function(req, res){
- var query = Events.findOne({slug: req.params.slug}).select();
-  query.exec(function(err, event){
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      res.json(event);
-    }
-  });
-});
-
-/*
- * UPDATE Event
- */
-router.post('/api/events/:slug', function(req, res){
-  var update = {  slug: req.body.slug,
-                  name: req.body.name,
-                  place: req.body.place,
-                  date: req.body.date,
-                  description: req.body.description
-               }
-  Events.findOneAndUpdate({slug: req.params.slug}, update, function(err, event){
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      event.title = 'DoCSoc | ' + event.name;
-      res.render('event', event);
-    }
-  });
-})
+router.route('/api/events/:slug')
+  .get(function(req, res){
+    var query = Events.findOne({slug: req.params.slug}).select();
+     query.exec(function(err, event){
+       if(err) {
+         res.status(500).json(err);
+         return;
+       } else {
+         res.json(event);
+       }
+     });
+   })
+  .post(function(req, res){
+    var update = {  slug: req.body.slug,
+                    name: req.body.name,
+                    place: req.body.place,
+                    date: req.body.date,
+                    description: req.body.description
+                 }
+    Events.findOneAndUpdate({slug: req.params.slug}, update, function(err, event){
+      if(err) {
+        res.status(500).json(err);
+        return;
+      } else {
+        res.render(event);
+      }
+    });
+  })
 
 /*
  * Start Event Sign Up
@@ -188,7 +185,20 @@ router.get('/api/events/:slug/state', function(req, res){
       res.json(event.signUpOpen);
     }
   });
- 
+});
+
+/*
+ * POST Sign Up LIst
+ */
+router.post('/api/events/:slug/signup', function(req, res){
+  Events.findOneAndUpdate({slug: req.params.slug},{$push: {signUpList: new SignUpUser(req.body)}}, function(err, event) {
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      res.json(event.signUpList);
+    }
+  });
 });
 
 module.exports = router;

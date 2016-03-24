@@ -39,18 +39,21 @@ db.model('Events', eventSchema);
 var signUpSchema = new Schema({
                      shortcode: {
                        type: String,
+                       unique: true,
                        required: true
                      },
                      name: {
                        type: String,
+                       unique: true,
                        required: true
                      },
                      year: {
                        type: String,
+                       unique: true,
                        required: true
                      }
                    });
-db.model('SignUpUser', signUpSchema);
+var SignUpUser = db.model('SignUpUser', signUpSchema);
 
 
 var userSchema =  new Schema({
