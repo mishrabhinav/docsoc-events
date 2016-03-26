@@ -15,7 +15,8 @@ block content
              td 
                h5 {{e.name}}
              td
-               .btn.btn-success.btn-manage(ng-click='startEvent(e.slug)') Start
+               .btn.btn-success.btn-manage(ng-click='startEvent(e.slug)', ng-if='!e.signUpOpen') Start
+               .btn.btn-default.btn-manage(ng-click='endEvent(e.slug)', ng-if='e.signUpOpen') End
              td
                .btn.btn-warning.btn-manage(ng-click='editEvent(e.slug)') Edit
              td

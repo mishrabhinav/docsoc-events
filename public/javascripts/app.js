@@ -28,6 +28,14 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
     $scope.updateEvents();
   };
 
+  $scope.endEvent = function (slug) {
+    $http.get('/api/events/' + slug +'/end')
+      .then(function(data){
+        console.log(slug + ' started.');
+      })
+    $scope.updateEvents();
+  };
+
   $scope.editEvent = function (slug) {
     window.location.href='/events/' + slug + '/edit';
     $scope.updateEvents();
