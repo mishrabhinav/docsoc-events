@@ -201,4 +201,14 @@ router.post('/api/events/:slug/signup', function(req, res){
   });
 });
 
+/*
+ * Delete Event
+ */
+router.delete('/api/events/:slug/delete', function(req, res){
+  Events.findOne({slug: req.params.slug}).remove(function(err){
+    if(err) {
+      res.status(500).json(err);
+    }
+  });
+});
 module.exports = router;

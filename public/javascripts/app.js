@@ -21,6 +21,10 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.startEvent = function (slug) {
+    $http.get('/api/events/' + slug +'/start')
+      .then(function(data){
+        console.log(slug + ' started.');
+      })
     $scope.updateEvents();
   };
 
@@ -30,6 +34,13 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.deleteEvent = function (slug) {
+    if(confirm("Delete the Event?")) {
+      $http.delete('/api/events/' + slug + '/delete')
+        .then(function(data){})
+        .catch(function(err){
+          console.log(err);
+        })
+    }
     $scope.updateEvents();
   };
 }]);
