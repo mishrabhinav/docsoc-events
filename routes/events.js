@@ -114,7 +114,7 @@ router.route('/api/events')
   })
 
 /*
- * GET and UPDATE Event
+ * GET, UPDATE and DELETE slug Event
  */
 router.route('/api/events/:slug')
   .get(function(req, res){
@@ -144,6 +144,14 @@ router.route('/api/events/:slug')
       }
     });
   })
+  .delete(function(req, res){
+    Events.findOne({slug: req.params.slug}).remove(function(err){
+      if(err) {
+        res.status(500).json(err);
+      }
+    });
+  });
+
 
 /*
  * Start Event Sign Up
@@ -197,17 +205,6 @@ router.post('/api/events/:slug/signup', function(req, res){
       return;
     } else {
       res.json(event.signUpList);
-    }
-  });
-});
-
-/*
- * Delete Event
- */
-router.delete('/api/events/:slug/delete', function(req, res){
-  Events.findOne({slug: req.params.slug}).remove(function(err){
-    if(err) {
-      res.status(500).json(err);
     }
   });
 });

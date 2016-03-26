@@ -35,7 +35,7 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
 
   $scope.deleteEvent = function (slug) {
     if(confirm("Delete the Event?")) {
-      $http.delete('/api/events/' + slug + '/delete')
+      $http.delete('/api/events/' + slug)
         .then(function(data){})
         .catch(function(err){
           console.log(err);
