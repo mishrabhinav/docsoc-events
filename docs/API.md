@@ -8,6 +8,7 @@
 - /api/events/:slug
   - GET: Returns the slug event.
   - POST: Update the slug event.
+  - DELETE: Delete the slug event.
 - /api/events/:slug/start
   - GET: Start the event sign up.
 - /api/events/:slug/end
