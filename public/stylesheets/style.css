@@ -20,6 +20,14 @@ a.lnk{
   width: 150px;
 }
 
+.min-width{ 
+    overflow-x:auto; 
+}
+
+ul.nav {
+  display: inline-flex;
+}
+
 .event-welcome {
   padding-top: 30px;
   padding-bottom: 30px;
