@@ -15,7 +15,7 @@ block content
               h3 #[a.lnk(href='/events/{{e.slug}}') {{e.name}}]
               h4 {{e.place}}
               h4 {{e.date}}
-              p {{e.description}}
+              pre {{e.description}}
           .row
             .col-md-12.btn-group
               .btn.btn-primary(ng-click='signUp(e.slug)') Sign Up
