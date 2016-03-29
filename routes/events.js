@@ -1,10 +1,23 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
 var db = require('mongoose');
 var Events = db.model('Events');
 var SignUpUser = db.model('SignUpUser');
 var passport = require('passport');
 
+/*
+ * Initialize Multer
+ */
+var storage = multer.diskStorage({
+  destination: function(req, file, callback) {
+    callback(null, '/images/uploads');
+  },
+  filename: function(req, file, callback){
+    callback(null, file.fieldname + '-' + Date.now());
+  }
+});
+var upload = multer({storage: storage}).single('eventPhoto');
 
 /*
  * GET Home page.
@@ -99,10 +112,19 @@ router.route('/api/events')
       }
     });
   })
-  .post(/*passport.authenticate('local'),*/ function(req, res) {
+  .post(multer().single('eventPhoto'), function(req, res) {
     var entry = req.body;
-    entry.slug = entry.slug.split(' ').join('-');
+    entry.slug = entry.slug.split(' ').join('-'); 
     var event = new Events(entry);
+    if(req.file) {
+      event.eventPhoto.contentType = req.file.mimetype;
+      event.eventPhoto.data = req.file.buffer;
+    } else {
+      var imgDir = path.join(__dirname, 'public', 'images');
+      var imgNames = 'default.png';
+      event.picture.data = fs.readFileSync(path.join(imgDir, imgNames));
+      event.picture.contentType = 'image/png';
+    }
     event.save(function(err){
       if(err) {
 	res.status(500).json(err);
@@ -208,4 +230,19 @@ router.post('/api/events/:slug/signup', function(req, res){
     }
   });
 });
+
+/*
+ * GET Event Image
+ */
+router.get('/api/events/:slug/picture', function(req, res){
+  Events.findOne({slug: req.params.slug}, function(err, event){
+    if(err) {
+      res.status(500).json(err);
+      return;
+    } else {
+      res.send(event.eventPhoto.data);
+    }
+  })
+})
+
 module.exports = router;
