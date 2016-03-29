@@ -3,7 +3,8 @@ extends layout
 block page
   - var menu = 'events'
 block content
-  h1 Welcome to DoCSoc Events
+  center
+    h2 Upcoming Events
   .col-md-12.div-center
     .row.event-info(ng-repeat="e in events | orderBy:'-date'")
       .row
