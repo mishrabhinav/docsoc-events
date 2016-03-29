@@ -21,6 +21,10 @@ var eventSchema =  new Schema({
                        required: true
                      },
                      description: String,
+                     eventPhoto: {
+                       data: Buffer,
+                       contentType: String
+                     },
                      organiser: {
                        type: Schema.Types.ObjectId,
                        ref: 'User'

@@ -5,7 +5,7 @@ block page
 block content
   .row
     .col-md-6
-      form(action="/api/events", method="POST")
+      form(enctype='multipart/form-data', action="/api/events", method="POST")
         p
           input.form-control(name="slug", type="text", placeholder="Slug", required)
         p
@@ -16,6 +16,8 @@ block content
           input.form-control(name="date", type="text", placeholder="Date", required)
         p
           textarea.form-control(name="description", type="text", placeholder="Description")
+        p
+          input(name="eventPhoto", type="file", placeholder="Cover Image", accept='.png,.jpg')
         p
           button.btn.btn-lg.btn-primary.btn-block(type="submit") Create Event
     .col-md-6
