@@ -174,48 +174,32 @@ router.route('/api/events/:slug')
     });
   });
 
-
-/*
- * Start Event Sign Up
+/* 
+ * Merge Sign Up ends.
  */
-router.get('/api/events/:slug/start', function(req, res){
-  Events.findOneAndUpdate({slug: req.params.slug}, {$set: {signUpOpen: true}}, function(err, event){
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      res.json(event.signUpOpen);
-    }
+router.route('/api/events/:slug/state')
+  .get(function(req, res){
+    Events.findOne({slug: req.params.slug}, function(err, event){
+      if(err) {
+        res.status(500).json(err);
+        return;
+      } else {
+        res.json(event.signUpOpen);
+      }
+    });
+  })
+  .post(function(req, res){
+    Events.findOneAndUpdate({slug: req.params.slug}, 
+                             {$set: {signUpOpen: req.body.signUpOpen}},
+                             function(err, event){
+      if(err) {
+        res.status(500).json(err);
+        return;
+      } else {
+        res.json(event.signUpOpen);
+      }
+    });
   });
-});
-
-/*
- * End Event Sign Up
- */
-router.get('/api/events/:slug/end', function(req, res){
-  Events.findOneAndUpdate({slug: req.params.slug}, {$set: {signUpOpen: false}}, function(err, event){
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      res.json(event.signUpOpen);
-    }
-  });
-});
-
-/*
- *  Get Event State
- */
-router.get('/api/events/:slug/state', function(req, res){
-  Events.findOne({slug: req.params.slug}, function(err, event){
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      res.json(event.signUpOpen);
-    }
-  });
-});
 
 /*
  * POST Sign Up LIst
@@ -240,7 +224,7 @@ router.get('/api/events/:slug/picture', function(req, res){
       res.status(500).json(err);
       return;
     } else {
-      res.send(event.eventPhoto.data);
+      res.end(event.eventPhoto.data);
     }
   })
 })

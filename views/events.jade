@@ -8,7 +8,7 @@ block content
     .row.event-info(ng-repeat="e in events | orderBy:'-date'")
       .row
         .col-md-4
-          img.event-img(src='/api/events/{{e.slug}}/picture')
+          img.event-img(ng-src='/api/events/{{e.slug}}/picture')
         .col-md-8
           .row
             .col-md-12

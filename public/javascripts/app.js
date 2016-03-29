@@ -21,7 +21,12 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.startEvent = function (slug) {
-    $http.get('/api/events/' + slug +'/start')
+    var postConfig = {
+                       headers : {
+                         'Content-Type': 'application/json'
+                       }
+                     }
+    $http.post('/api/events/' + slug +'/state', {"signUpOpen": true}, postConfig)
       .then(function(data){
         console.log(slug + ' started.');
       })
@@ -29,7 +34,12 @@ eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) 
   };
 
   $scope.endEvent = function (slug) {
-    $http.get('/api/events/' + slug +'/end')
+    var postConfig = {
+                       headers : {
+                         'Content-Type': 'application/json'
+                       }
+                     }
+    $http.post('/api/events/' + slug +'/state', {"signUpOpen": false}, postConfig)
       .then(function(data){
         console.log(slug + ' started.');
       })
