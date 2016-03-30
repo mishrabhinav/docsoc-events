@@ -8,5 +8,5 @@
 5. ~~Handle the 304 HTML codes.~~
 6. ~~Upload cover image for event.~~
 
-### Future Feats: 
+## Future Plans: 
 - Pickup events from facebook.
