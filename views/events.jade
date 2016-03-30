@@ -15,7 +15,7 @@ block content
             .col-md-12
               h3 #[a.lnk(href='/events/{{e.slug}}') {{e.name}}]
               h4 {{e.place}}
-              h4 {{e.date}}
+              h4 {{e.date | date}}
               pre {{e.description}}
           .row
             .col-md-12.btn-group
