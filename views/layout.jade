@@ -1,11 +1,12 @@
 doctype html
-html(ng-app='eventsApp')
+html(ng-app='app')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='/javascripts/angular.js')
     script(src='/javascripts/app.js')
+    script(src='/javascripts/services/eventsAPI.js')
   body
     block page
     .event-welcome

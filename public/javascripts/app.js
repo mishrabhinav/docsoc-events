@@ -1,6 +1,6 @@
-var eventsApp = angular.module('eventsApp', []);
+var app = angular.module('app', []);
 
-eventsApp.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) {
   $scope.events = [];
 
   $http.get('/api/events')
