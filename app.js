@@ -5,6 +5,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var compression = require('compression');
+var helmet = require('helmet');
 var http = require('http');
 var mongoose = require('mongoose');
 var passport = require('passport');
@@ -41,6 +43,8 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression());
+app.use(helmet());
 
 // User Database
 var User = mongoose.model('User');
@@ -97,7 +101,7 @@ app.use(function(err, req, res, next) {
 var server = http.createServer(app);
 var boot = function () {
   server.listen(app.get('port'), function(){
-    console.info('Express server listening on port ' + app.get('port'));
+    console.info('Application running on port ' + app.get('port'));
   });
 }
 var shutdown = function () {
