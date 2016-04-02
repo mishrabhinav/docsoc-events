@@ -1,12 +1,35 @@
-app.factory('api', ['$http', function($http){
-  var factory = {};
+app.service('API', ['$http', function($http){
+  
+  var endpoint = '/api/events/';
+  var postConfig = {
+                     headers : {
+                       'Content-Type': 'application/json'
+                     }
+                   }
 
-  factory.all = function() {
-    return $http.get('/api/events')
-             .then(function(data){
-               return data.data;
-             })
+  this.all = function() {
+    return $http.get(endpoint);
   }
 
-  return factory;
-}])
+  this.id = function(slug) {
+    return $http.get(endpoint + slug);
+  }
+
+  this.delete = function(slug) {
+    if(confirm('Delete Event: ' + slug +'?')) {
+      return $http.delete(endpoint + slug);
+    }
+  }
+
+  this.start = function(slug) {
+    return $http.post(endpoint + slug + '/state',
+                      {"signUpOpen": true},
+                      postConfig);
+  }
+
+  this.end = function(slug) {
+    return $http.post(endpoint + slug + '/state',
+                      {"signUpOpen": false},
+                      postConfig);
+  }
+}]);
