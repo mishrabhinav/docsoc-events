@@ -1,13 +1,11 @@
 .col-md-12.event-info
   center
-    h2= name
+    h2 {{slugEvent.name}}
 .col-md-12.div-center
   .row
     .col-md-6
-      h4 Venue: 
-        = place
-      h4  Date: 
-        = date
+      h4 Venue: {{slugEvent.place}}
+      h4  Date: {{slugEvent.date | date}}
     .col-md-6
       .btn-group.pull-right
         .btn.btn-primary Sign Up
@@ -16,8 +14,8 @@
         .btn.btn-danger Delete
   br
   .row
-    pre= description
+    pre {{slugEvent.description}}
   .row
     center
-      img.event-img(src='/api/events/' + slug + '/picture')
+      img.event-img(ng-src='/api/events/{{slugEvent.slug}}/picture')
       
