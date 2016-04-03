@@ -1,4 +1,4 @@
-app.controller('eventsCtrl', ['$scope', '$http', '$window', 'API', function ($scope, $http, $window,  API) {
+app.controller('eventsCtrl', ['$scope', '$http', '$location', 'API', function ($scope, $http, $location,  API) {
 
   $scope.updateEvents = function() {
      API.all()
@@ -10,7 +10,7 @@ app.controller('eventsCtrl', ['$scope', '$http', '$window', 'API', function ($sc
   $scope.updateEvents();
 
   $scope.signUp = function (slug) {
-    $window.location.href='/events/' + slug + '/signup';
+    $location.url('/events/' + slug + '/signup');
     $scope.updateEvents();
   };
 
@@ -31,7 +31,7 @@ app.controller('eventsCtrl', ['$scope', '$http', '$window', 'API', function ($sc
   };
 
   $scope.editEvent = function (slug) {
-    $window.location.href='/events/' + slug + '/edit';
+    $location.url('/events/' + slug + '/edit');
     $scope.updateEvents();
   };
 
@@ -87,4 +87,22 @@ app.controller('manageCtrl', ['$scope', '$window', 'API', 'TitleService', functi
        })
     $scope.updateEvents();
   };
+}]);
+
+app.controller('eventCtrl', ['$scope','$routeParams', 'API', 'TitleService', function($scope, $routeParams, API, TitleService){
+  API.id($routeParams.slug)
+     .then(function(data){
+       $scope.slugEvent = data.data;
+       TitleService.setTitle('DoCSoc | ' + $scope.slugEvent.name);
+     })
+
+}]);
+
+app.controller('editCtrl', ['$scope','$routeParams', 'API', 'TitleService', function($scope, $routeParams, API, TitleService){
+  API.id($routeParams.slug)
+     .then(function(data){
+       $scope.editEvent = data.data;
+       TitleService.setTitle('DoCSoc | Edit Event');
+     })
+
 }]);

@@ -19,6 +19,18 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'login',
       controller: 'eventsCtrl'
     }).
+    when('/events/:slug', {
+      templateUrl: 'event',
+      controller: 'eventCtrl'
+    }).
+    when('/events/:slug/edit', {
+      templateUrl: 'edit',
+      controller: 'editCtrl'
+    }).
+    when('/events/:slug/signup', {
+      templateUrl: 'signup',
+      controller: 'eventCtrl'
+    }).
     otherwise({
       redirectTo: '/'
     })
