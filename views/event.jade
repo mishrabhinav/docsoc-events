@@ -2,17 +2,25 @@ extends layout
 
 block page
 block content
+  .col-md-12.event-info
+    center
+      h2= name
   .col-md-12.div-center
-    .row.event-info
-      .col-md-10
-        h3= name
-        h4= place
-        h4= date
-        p= description
-      .col-md-2
-        .btn-group-vertical
+    .row
+      .col-md-6
+        h4 Venue: 
+          = place
+        h4  Date: 
+          = date
+      .col-md-6
+        .btn-group.pull-right
           .btn.btn-primary Sign Up
           .btn.btn-success Start Event
           .btn.btn-warning Edit
           .btn.btn-danger Delete
+    .row
+      pre= description
+    .row
+      center
+        img.event-img(src='/api/events/' + slug + '/picture')
         
