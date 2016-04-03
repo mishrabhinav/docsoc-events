@@ -6,13 +6,13 @@ var passport = require('passport');
  * GET login page. 
  */
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'DoCSoc | Login' });
+  res.render('login');
 });
 
 /*
  * POST login page.
  */
-router.post('/', /*passport.authenticate('local'),*/ function(req, res){
+router.post('/', function(req, res){
   res.redirect('/manage');
 });
 

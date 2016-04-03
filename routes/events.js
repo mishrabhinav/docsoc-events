@@ -23,21 +23,24 @@ var upload = multer({storage: storage}).single('eventPhoto');
  * GET Home page.
  */
 router.get('/', function(req, res, next) {
-  res.render('events', {title: 'DoCSoc | Events'});
+  res.render('container');
 });
 
+router.get('/events', function(req, res, next) {
+  res.render('events');
+});
 /*
  * GET Manage page.
  */
-router.get('/manage',/* passport.authenticate('local'),*/ function(req, res, next) {
-  res.render('manage', {title: 'DoCSoc | Manage Events'});
+router.get('/manage', function(req, res, next) {
+  res.render('manage');
 });
 
 /*
  * GET Post page.
  */
-router.get('/post',/* passport.authenticate('local'),*/ function(req, res, next) {
-  res.render('post', {title: 'DoCSoc | Create Event'});
+router.get('/post', function(req, res, next) {
+  res.render('post');
 });
 
 /*
@@ -114,7 +117,7 @@ router.route('/api/events')
   })
   .post(multer().single('eventPhoto'), function(req, res) {
     var entry = req.body;
-    entry.slug = entry.slug.split(' ').join('-'); 
+    entry.slug = entry.slug.split(' ').join('-');
     var event = new Events(entry);
     if(req.file) {
       event.eventPhoto.contentType = req.file.mimetype;
@@ -174,7 +177,7 @@ router.route('/api/events/:slug')
     });
   });
 
-/* 
+/*
  * Merge Sign Up ends.
  */
 router.route('/api/events/:slug/state')
@@ -189,7 +192,7 @@ router.route('/api/events/:slug/state')
     });
   })
   .post(function(req, res){
-    Events.findOneAndUpdate({slug: req.params.slug}, 
+    Events.findOneAndUpdate({slug: req.params.slug},
                              {$set: {signUpOpen: req.body.signUpOpen}},
                              function(err, event){
       if(err) {
