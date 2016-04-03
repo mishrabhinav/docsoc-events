@@ -47,29 +47,11 @@ router.get('/post', function(req, res, next) {
  * GET Single Event
  */
 router.get('/events/:slug', function(req, res, next) {
-  var query = Events.findOne({slug: req.params.slug}).select();
-  query.exec(function(err, event){
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      event.title = 'DoCSoc | ' + event.name;
-      res.render('event', event);
-    }
-  });
+  res.render('partials/event');
 });
 
 router.get('/events/:slug/edit', function(req, res, next) {
-  var query = Events.findOne({slug: req.params.slug}).select();
-  query.exec(function(err, event) {
-    if(err) {
-      res.status(500).json(err);
-      return;
-    } else {
-      event.title = 'DoCSoc | Edit Event';
-      res.render('edit', event);
-    }
-  });
+  res.render('partials/edit');
 });
 
 /*
@@ -97,7 +79,7 @@ router.post('/events/:slug/update', function(req, res, next) {
  * Event Sign Up Page
  */
 router.get('/events/:slug/signup', function(req, res, next) {
-  res.render('signup', {title: 'DoCSoc | Sign Up'});
+  res.render('partials/signup');
 });
 
 /*
