@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ngRoute']);
 
 // Routing
-app.config(function($routeProvider){
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider.
     when('/', {
       templateUrl: 'events',
@@ -9,7 +9,7 @@ app.config(function($routeProvider){
     }).
     when('/manage', {
       templateUrl: 'manage',
-      controller: 'eventsCtrl'
+      controller: 'manageCtrl'
     }).
     when('/post', {
       templateUrl: 'post',
@@ -18,6 +18,16 @@ app.config(function($routeProvider){
     when('/login', {
       templateUrl: 'login',
       controller: 'eventsCtrl'
+    }).
+    otherwise({
+      redirectTo: '/'
     })
-})
+
+  $locationProvider.html5Mode(true);
+}])
+
+app.controller('MainController', ['$scope', 'TitleService',function($scope, TitleService){
+  $scope.TitleService = TitleService;
+}])
+
 // Declare Angular Constants here.
