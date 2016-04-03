@@ -27,20 +27,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/events', function(req, res, next) {
-  res.render('events');
+  res.render('partials/events');
 });
 /*
  * GET Manage page.
  */
 router.get('/manage', function(req, res, next) {
-  res.render('manage');
+  res.render('partials/manage');
 });
 
 /*
  * GET Post page.
  */
 router.get('/post', function(req, res, next) {
-  res.render('post');
+  res.render('partials/post');
 });
 
 /*
