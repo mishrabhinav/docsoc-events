@@ -1,27 +1,24 @@
-extends layout
-
-block content
-  .col-md-12
-    h2 
-      | Edit Event - 
-      = name  
-    br
-  .row
-    .col-md-6
-      form(action="/events/"+ slug +"/update", method="POST")
-        p
-          input.form-control(name="slug", type="text", placeholder="Slug", value= slug,required)
-        p
-          input.form-control(name="name", type="text", placeholder="Event Name", value= name, required)
-        p
-          input.form-control(name="place", type="text", placeholder="Event Venue", value= place, required)
-        p
-          input.form-control(name="date", type="text", placeholder="Date", value= date, required)
-        p
-          textarea.form-control(name="description", type="text", placeholder="Description")
-            = description
-        p
-          button.btn.btn-lg.btn-primary.btn-block(type="submit") Edit Event
-    .col-md-6
+.col-md-12
+  h2 
+    | Edit Event - 
+    = name  
+  br
+.row
+  .col-md-6
+    form(action="/events/"+ slug +"/update", method="POST")
       p
-        | Here will be some information regarding editing events.
+        input.form-control(name="slug", type="text", placeholder="Slug", value= slug,required)
+      p
+        input.form-control(name="name", type="text", placeholder="Event Name", value= name, required)
+      p
+        input.form-control(name="place", type="text", placeholder="Event Venue", value= place, required)
+      p
+        input.form-control(name="date", type="text", placeholder="Date", value= date, required)
+      p
+        textarea.form-control(name="description", type="text", placeholder="Description")
+          = description
+      p
+        button.btn.btn-lg.btn-primary.btn-block(type="submit") Edit Event
+  .col-md-6
+    p
+      | Here will be some information regarding editing events.

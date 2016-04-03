@@ -1,13 +1,10 @@
-extends layout
-
-block content
-  .col-md-4.div-center
-    form(action="/events/" + slug + "/signup", method="POST")
-      p
-        input.form-control(name="shortcode", type="text", placeholder="College Login")
-      p
-        input.form-control(name="name", type="text", placeholder="Full Name")
-      p
-        input.form-control(name="year", type="text", placeholder="Year of Study")
-      p
-        button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign Up
+.col-md-4.div-center
+  form(action="/events/" + slug + "/signup", method="POST")
+    p
+      input.form-control(name="shortcode", type="text", placeholder="College Login")
+    p
+      input.form-control(name="name", type="text", placeholder="Full Name")
+    p
+      input.form-control(name="year", type="text", placeholder="Year of Study")
+    p
+      button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign Up
