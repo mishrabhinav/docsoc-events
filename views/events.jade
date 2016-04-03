@@ -1,27 +1,22 @@
-extends layout
-
-block page
-  - var menu = 'events'
-block content
-  center
-    h2 Upcoming Events
-  .col-md-12.div-center
-    .row.event-info(ng-repeat="e in events | orderBy:'-date'")
-      .row
-        .col-md-4
-          img.event-img(ng-src='/api/events/{{e.slug}}/picture')
-        .col-md-8
-          .row
-            .col-md-12
-              h3 #[a.lnk(href='/events/{{e.slug}}') {{e.name}}]
-              h4 {{e.place}}
-              h4 {{e.date | date}}
-              pre {{e.description}}
-          .row
-            .col-md-12.btn-group
-              .btn.btn-primary(ng-click='signUp(e.slug)') Sign Up
-              .btn.btn-success(ng-click='startEvent(e.slug)', ng-if='!e.signUpOpen') Start
-              .btn.btn-default(ng-click='endEvent(e.slug)', ng-if='e.signUpOpen') End
-              .btn.btn-warning(ng-click='editEvent(e.slug)') Edit
-              .btn.btn-danger(ng-click='deleteEvent(e.slug)') Delete
-        
+center
+  h2 Upcoming Events
+.col-md-12.div-center
+  .row.event-info(ng-repeat="e in events | orderBy:'-date'")
+    .row
+      .col-md-4
+        img.event-img(ng-src='/api/events/{{e.slug}}/picture')
+      .col-md-8
+        .row
+          .col-md-12
+            h3 #[a.lnk(href='/events/{{e.slug}}') {{e.name}}]
+            h4 {{e.place}}
+            h4 {{e.date | date}}
+            pre {{e.description}}
+        .row
+          .col-md-12.btn-group
+            .btn.btn-primary(ng-click='signUp(e.slug)') Sign Up
+            .btn.btn-success(ng-click='startEvent(e.slug)', ng-if='!e.signUpOpen') Start
+            .btn.btn-default(ng-click='endEvent(e.slug)', ng-if='e.signUpOpen') End
+            .btn.btn-warning(ng-click='editEvent(e.slug)') Edit
+            .btn.btn-danger(ng-click='deleteEvent(e.slug)') Delete
+      

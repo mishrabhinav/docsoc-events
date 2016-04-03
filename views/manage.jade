@@ -1,25 +1,19 @@
-extends layout
-
-block page
-  - var menu = 'manage'
-block content
-  .row
-    table.table.table-stripped
-       thead
-         tr
-           th(width='70%') Event
-           th(width='10%')
-           th(width='10%')
-           th(width='10%')
-           tr(ng-repeat='e in events')
-             td 
-               h5 {{e.name}}
-             td
-               .btn.btn-success.btn-manage(ng-click='startEvent(e.slug)', ng-if='!e.signUpOpen') Start
-               .btn.btn-default.btn-manage(ng-click='endEvent(e.slug)', ng-if='e.signUpOpen') End
-             td
-               .btn.btn-warning.btn-manage(ng-click='editEvent(e.slug)') Edit
-             td
-               .btn.btn-danger.btn-manage(ng-click='deleteEvent(e.slug)') Delete
-       tbody
-            
+.row
+  table.table.table-stripped
+     thead
+       tr
+         th(width='70%') Event
+         th(width='10%')
+         th(width='10%')
+         th(width='10%')
+         tr(ng-repeat='e in events')
+           td
+             h5 {{e.name}}
+           td
+             .btn.btn-success.btn-manage(ng-click='startEvent(e.slug)', ng-if='!e.signUpOpen') Start
+             .btn.btn-default.btn-manage(ng-click='endEvent(e.slug)', ng-if='e.signUpOpen') End
+           td
+             .btn.btn-warning.btn-manage(ng-click='editEvent(e.slug)') Edit
+           td
+             .btn.btn-danger.btn-manage(ng-click='deleteEvent(e.slug)') Delete
+     tbody

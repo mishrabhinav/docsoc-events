@@ -1,0 +1,20 @@
+extends layout
+
+block body
+  .event-welcome
+     .container
+       .row
+         div(class='col-md-2 col-md-offset-5')
+           img(class='center-block docsoc-logo' src='/images/docsoc-logo.png')
+       br
+       .row
+         .col-md-10.div-center
+           include includes/menu
+       br
+    div(class='container', id='event-intro')
+     .row
+        .well.col-md-10.div-center
+          div(ng-view)
+        br
+        p.text-center
+          | Made with ♥ by #[a.lnk(href='https://github.com/mishrabhinav') Abhinav Mishra]

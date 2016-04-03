@@ -7,27 +7,11 @@ html(ng-app='app')
 
     // AngularJS Files
     script(src='/javascripts/angular.js')
+    script(src='/javascripts/angular-route.min.js')
     script(src='/javascripts/app.js')
     // AngularJS Controller
     script(src='/javascripts/controller/eventsController.js')
     // AngularJS Services
     script(src='/javascripts/services/eventsAPI.js')
   body
-    block page
-    .event-welcome
-       .container
-         .row
-           div(class='col-md-2 col-md-offset-5')
-             img(class='center-block docsoc-logo' src='/images/docsoc-logo.png')
-         br
-         .row
-           .col-md-10.div-center
-             include includes/menu
-         br
-      div(class='container', id='event-intro')
-       .row
-          .well.col-md-10.div-center(ng-controller='eventsCtrl')
-            block content
-          br
-          p.text-center
-            | Made with ♥ by #[a.lnk(href='https://github.com/mishrabhinav') Abhinav Mishra]
+    block body

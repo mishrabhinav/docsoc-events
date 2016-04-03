@@ -1,31 +1,26 @@
-extends layout
-
-block page
-  - var menu = 'post'
-block content
-  .row
-    .col-md-6
-      form(enctype='multipart/form-data', action="/api/events", method="POST")
-        p
-          input.form-control(name="slug", type="text", placeholder="Slug", required)
-        p
-          input.form-control(name="name", type="text", placeholder="Event Name", required)
-        p
-          input.form-control(name="place", type="text", placeholder="Event Venue", required)
-        p
-          input.form-control(name="date", type="text", placeholder="Date", required)
-        p
-          textarea.form-control(name="description", type="text", placeholder="Description")
-        p
-          input(name="eventPhoto", type="file", placeholder="Cover Image", accept='.png,.jpg')
-        p
-          button.btn.btn-lg.btn-primary.btn-block(type="submit") Create Event
-    .col-md-6
+.row
+  .col-md-6
+    form(enctype='multipart/form-data', action="/api/events", method="POST")
       p
-        | Here will be some information regarding new events. 
-        br
-        br
-        | Please enter the date as 'YYYY-MM-DD HH:MM:SS'
-        br
-        | i.e. if the date-time is 02/03/2016 14:30 enter it as
-        | 2016-03-02 14:30:00
+        input.form-control(name="slug", type="text", placeholder="Slug", required)
+      p
+        input.form-control(name="name", type="text", placeholder="Event Name", required)
+      p
+        input.form-control(name="place", type="text", placeholder="Event Venue", required)
+      p
+        input.form-control(name="date", type="text", placeholder="Date", required)
+      p
+        textarea.form-control(name="description", type="text", placeholder="Description")
+      p
+        input(name="eventPhoto", type="file", placeholder="Cover Image", accept='.png,.jpg')
+      p
+        button.btn.btn-lg.btn-primary.btn-block(type="submit") Create Event
+  .col-md-6
+    p
+      | Here will be some information regarding new events. 
+      br
+      br
+      | Please enter the date as 'YYYY-MM-DD HH:MM:SS'
+      br
+      | i.e. if the date-time is 02/03/2016 14:30 enter it as
+      | 2016-03-02 14:30:00
