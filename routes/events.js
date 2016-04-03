@@ -46,11 +46,11 @@ router.get('/post', function(req, res, next) {
 /*
  * GET Single Event
  */
-router.get('/events/:slug', function(req, res, next) {
+router.get('/event', function(req, res, next) {
   res.render('partials/event');
 });
 
-router.get('/events/:slug/edit', function(req, res, next) {
+router.get('/edit', function(req, res, next) {
   res.render('partials/edit');
 });
 
@@ -78,7 +78,7 @@ router.post('/events/:slug/update', function(req, res, next) {
 /*
  * Event Sign Up Page
  */
-router.get('/events/:slug/signup', function(req, res, next) {
+router.get('/signup', function(req, res, next) {
   res.render('partials/signup');
 });
 
