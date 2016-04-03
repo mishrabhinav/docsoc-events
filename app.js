@@ -59,6 +59,8 @@ app.use('/', events)
 app.use('/login', login);
 app.use('/logout', login);
 app.use('/manage', events);
+app.use('/events', events);
+app.use('/post', events);
 app.use('/events/:slug', events);
 app.use('/events/:slug/update', events);
 app.use('/events/:slug/edit', events);
