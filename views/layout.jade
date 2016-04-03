@@ -1,7 +1,8 @@
 doctype html
-html(ng-app='app')
+html(ng-app='app', ng-controller='MainController')
   head
-    title= title
+    title  {{TitleService.title()}}
+    base(href='/')
     link(rel='stylesheet', href='/stylesheets/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
 
@@ -9,9 +10,8 @@ html(ng-app='app')
     script(src='/javascripts/angular.js')
     script(src='/javascripts/angular-route.min.js')
     script(src='/javascripts/app.js')
-    // AngularJS Controller
-    script(src='/javascripts/controller/eventsController.js')
     // AngularJS Services
     script(src='/javascripts/services/eventsAPI.js')
+    script(src='/javascripts/services/titleService.js')
   body
     block body
