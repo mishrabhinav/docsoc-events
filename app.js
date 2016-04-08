@@ -24,7 +24,6 @@ require('./db/models');
 
 var app = express();
 
-var master_router = require('./routes')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,6 +55,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser);
 passport.deserializeUser(User.deserializeUser);
 
+
+require('./routes')(app);
 // Page Routing
 //app.use('/', events)
 //app.use('/login', login);
