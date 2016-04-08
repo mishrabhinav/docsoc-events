@@ -1,6 +1,12 @@
-angular
-  .module('app', ['ngRoute'])
-  .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
+(function() {
+  'use strict';
+  
+  angular
+    .module('app', ['ngRoute'])
+    .config(['$routeProvider', '$locationProvider', router])
+    .controller('MainController', ['$scope', 'TitleService', title]);
+  
+  function router($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
         templateUrl: 'partials/events',
@@ -33,9 +39,11 @@ angular
       otherwise({
         redirectTo: '/'
       })
-
+  
     $locationProvider.html5Mode(true);
-  }])
-  .controller('MainController', ['$scope', 'TitleService',function($scope, TitleService){
+  }
+  
+  function title($scope, TitleService) {
     $scope.TitleService = TitleService;
-  }]);
+  }
+})();
