@@ -9,7 +9,8 @@
 5. ~~Handle the 304 HTML codes.~~
 6. ~~Upload cover image for event.~~
 7. ~~Implement routing using Angular.~~
-  - Minor bugs to be fixed.
+  - ~~Minor bugs to be fixed.~~
+  - ~~Using certified code style.~~
 
 ## Future Plans:
 - Pickup events from facebook.
