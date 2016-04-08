@@ -18,11 +18,13 @@ var db = mongoose.connect(process.env.DB_CONN);
 require('./db/models');
 
 // Routing
-var login = require('./routes/login');
-var events = require('./routes/events');
-var users = require('./routes/users');
+//var login = require('./routes/login');
+//var events = require('./routes/events');
+//var users = require('./routes/api/users/index');
 
 var app = express();
+
+var master_router = require('./routes')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,25 +57,25 @@ passport.serializeUser(User.serializeUser);
 passport.deserializeUser(User.deserializeUser);
 
 // Page Routing
-app.use('/', events)
-app.use('/login', login);
-app.use('/logout', login);
-app.use('/manage', events);
-app.use('/events', events);
-app.use('/event', events);
-app.use('/edit', events);
-app.use('/signup', events);
-app.use('/post', events);
-app.use('/events/:slug', events);
-app.use('/events/:slug/update', events);
-app.use('/events/:slug/edit', events);
-
-// API Routing
-app.use('/api/users', users);
-app.use('/api/events', events);
+//app.use('/', events)
+//app.use('/login', login);
+//app.use('/logout', login);
+//app.use('/partials/manage', events);
+//app.use('/events', events);
+//app.use('/partials/event', events);
+//app.use('/partials/edit', events);
+//app.use('/partials/signup', events);
+//app.use('/partials/post', events);
+//app.use('/events/:slug', events);
+//app.use('/events/:slug/update', events);
+//app.use('/events/:slug/edit', events);
+//
+//// API Routing
+//app.use('/api/users', users);
+//app.use('/api/events', events);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(err, req, res, next) {
   req.db = db;
   next(err);
 });
@@ -120,3 +122,4 @@ if (require.main === module) {
   exports.shutdown = shutdown;
   exports.port = app.get('port');
 }
+ module.exports = app;

@@ -4,31 +4,31 @@ var app = angular.module('app', ['ngRoute']);
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
   $routeProvider.
     when('/', {
-      templateUrl: 'events',
+      templateUrl: 'partials/events',
       controller: 'eventsCtrl'
     }).
     when('/manage', {
-      templateUrl: 'manage',
+      templateUrl: 'partials/manage',
       controller: 'manageCtrl'
     }).
     when('/post', {
-      templateUrl: 'post',
+      templateUrl: 'partials/post',
       controller: 'eventsCtrl'
     }).
     when('/login', {
-      templateUrl: 'login',
+      templateUrl: 'partials/login',
       controller: 'eventsCtrl'
     }).
     when('/events/:slug', {
-      templateUrl: 'event',
+      templateUrl: 'partials/event',
       controller: 'eventCtrl'
     }).
     when('/events/:slug/edit', {
-      templateUrl: 'edit',
+      templateUrl: 'partials/edit',
       controller: 'editCtrl'
     }).
     when('/events/:slug/signup', {
-      templateUrl: 'signup',
+      templateUrl: 'partials/signup',
       controller: 'eventCtrl'
     }).
     otherwise({
