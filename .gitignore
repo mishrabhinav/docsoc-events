@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/node,vim,osx
 
+### Data ###
+public/images/uploads
+
 ### Tmux ###
 dev-tmux
 
