@@ -56,6 +56,7 @@ passport.serializeUser(User.serializeUser);
 passport.deserializeUser(User.deserializeUser);
 
 
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 require('./routes')(app);
 // Page Routing
 //app.use('/', events)

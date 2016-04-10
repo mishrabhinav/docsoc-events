@@ -1,0 +1,19 @@
+{
+  "name": "docsoc-events",
+  "description": "App to manage events.",
+  "main": "app.js",
+  "authors": [
+    "Abhinav Mishra <abhinav.mishra15@imperial.ac.uk>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mishrabhinav/docsoc-events",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
