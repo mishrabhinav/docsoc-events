@@ -10,6 +10,7 @@ A web app to help manage the DoCSoc events.
   3. mongodb
 - Clone this repository
 - Run 'npm install' in the directory.
+- Run 'bower install' in the directory.
 - After node modules are installed, make a '.env' file.
 - In '.env' add the following:
   1. PORT=3000
