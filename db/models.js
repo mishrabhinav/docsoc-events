@@ -22,8 +22,11 @@ var eventSchema =  new Schema({
                      },
                      description: String,
                      eventPhoto: {
-                       data: Buffer,
-                       contentType: String
+                       type: String
+                     },
+                     hasCover : {
+                       type: Boolean,
+                     default: false
                      },
                      organiser: {
                        type: Schema.Types.ObjectId,
