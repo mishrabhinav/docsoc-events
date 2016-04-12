@@ -5,6 +5,7 @@ var uglify = require('gulp-uglify');
 
 gulp.task('angular', function(){
     return gulp.src(['./public/javascripts/app.js',
+                     './public/javascripts/directives/*.js',
                      './public/javascripts/services/*.js',
                      './public/javascripts/controllers/*.js'])
                .pipe(concat('ngApp.js')).on('error', errorHandler)
