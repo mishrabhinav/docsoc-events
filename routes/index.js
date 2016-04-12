@@ -2,6 +2,7 @@ module.exports = function(app) {
   
   app.use('/events', require('./events'));
   app.use('/partials', require('./partials'));
+  app.use('/ngLayouts', require('./ngLayouts'));
   app.use('/login', require('./users/login'))
   app.use('/logout', require('./users/logout'))
   app.use('/api', require('./api'))
