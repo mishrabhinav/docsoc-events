@@ -32,6 +32,10 @@ var eventSchema =  new Schema({
                        type: Schema.Types.ObjectId,
                        ref: 'User'
                      },
+                     layout: {
+                       type: String,
+                       default: 'vertical' 
+                     },
                      signUpOpen: {
                        type: Boolean,
                        default: false 
