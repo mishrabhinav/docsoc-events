@@ -1,18 +1,18 @@
 .row
   .col-md-12
     .row
-      img.event-img(ng-src='{{e.eventPhoto}}')
+      img.event-img(ng-src='{{event.eventPhoto}}')
     .row
       .col-md-12
-        h3 #[a.lnk(href='/events/{{e.slug}}') {{e.name}}]
-        h4 {{e.place}}
-        h4 {{e.date | date}}
-        pre {{e.description}}
+        h3 #[a.lnk(href='/events/{{event.slug}}') {{event.name}}]
+        h4 {{event.place}}
+        h4 {{event.date | date}}
+        pre {{event.description}}
     .row
       .col-md-12.btn-group
-        .btn.btn-primary(ng-click='signUp(e.slug)') Sign Up
-        .btn.btn-success(ng-click='startEvent(e.slug)', ng-if='!e.signUpOpen') Start
-        .btn.btn-default(ng-click='endEvent(e.slug)', ng-if='e.signUpOpen') End
-        .btn.btn-warning(ng-click='editEvent(e.slug)') Edit
-        .btn.btn-danger(ng-click='deleteEvent(e.slug)') Delete
+        .btn.btn-primary(ng-click='signUp(event.slug)') Sign Up
+        .btn.btn-success(ng-click='startEvent(event.slug)', ng-if='!event.signUpOpen') Start
+        .btn.btn-default(ng-click='endEvent(event.slug)', ng-if='event.signUpOpen') End
+        .btn.btn-warning(ng-click='editEvent(event.slug)') Edit
+        .btn.btn-danger(ng-click='deleteEvent(event.slug)') Delete
     
