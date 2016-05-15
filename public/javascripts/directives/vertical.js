@@ -9,9 +9,7 @@
       scope: {
         event: '='
       },
-      templateUrl: function(tElement, tAttrs) {
-            return tAttrs.templateUrl;
-      } 
+      templateUrl: 'ngLayouts/ngVertical' 
     }
   }
 })();

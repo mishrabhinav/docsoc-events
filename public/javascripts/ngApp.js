@@ -75,9 +75,7 @@
       scope: {
         event: '='
       },
-      templateUrl: function(tElement, tAttrs) {
-            return tAttrs.templateUrl;
-      } 
+      templateUrl: 'ngLayouts/ngVertical' 
     }
   }
 })();
@@ -191,9 +189,12 @@
   'use strict';
   angular
     .module('app')
-    .controller('eventsCtrl', ['$scope', '$location', 'API', eventsCtrl]);
+    .controller('eventsCtrl', ['$scope', '$location', 'API', 'TitleService', eventsCtrl]);
 
-  function eventsCtrl($scope, $location, API) {
+  function eventsCtrl($scope, $location, API, TitleService) {
+
+    TitleService.setTitle('DoCSoc Events');
+
     $scope.updateEvents = function() {
        API.all()
        .then(function(data){
