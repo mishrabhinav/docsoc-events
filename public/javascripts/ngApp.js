@@ -51,15 +51,33 @@
 (function() {
   angular
     .module('app')
-    .directive('ngEvent', ngEvent);
+    .directive('ngEventHorizontal', ngEvent);
 
   function ngEvent() {
     return {
       restrict: 'E',
       scope: {
         event: '='
-      }
-      templateUrl: 'ngLayouts/ngLayout1' 
+      },
+      templateUrl: 'ngLayouts/ngHorizontal' 
+    }
+  }
+})();
+
+(function() {
+  angular
+    .module('app')
+    .directive('ngEventVertical', ngEvent);
+
+  function ngEvent() {
+    return {
+      restrict: 'E',
+      scope: {
+        event: '='
+      },
+      templateUrl: function(tElement, tAttrs) {
+            return tAttrs.templateUrl;
+      } 
     }
   }
 })();

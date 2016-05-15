@@ -1,15 +1,17 @@
 (function() {
   angular
     .module('app')
-    .directive('ngEvent', ngEvent);
+    .directive('ngEventVertical', ngEvent);
 
   function ngEvent() {
     return {
       restrict: 'E',
       scope: {
         event: '='
-      }
-      templateUrl: 'ngLayouts/ngLayout1' 
+      },
+      templateUrl: function(tElement, tAttrs) {
+            return tAttrs.templateUrl;
+      } 
     }
   }
 })();
