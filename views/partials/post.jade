@@ -12,7 +12,20 @@
       p
         textarea.form-control(name="description", type="text", placeholder="Description")
       p
-        input(name="eventPhoto", type="file", placeholder="Cover Image", accept='.png,.jpg')
+        .col-md-6
+          | Select Event Orientation: 
+        .col-md-6
+          select(name="layout")
+            option(value="ngLayouts/ngVertical") Vertical
+            option(value="ngLayouts/ngHorizontal" Horizontal
+      br
+      p
+        .col-md-6
+          | Upload Cover Image: 
+        .col-md-6
+          input(name="eventPhoto", type="file", placeholder="Cover Image", accept='.png,.jpg')
+      br
+      br
       p
         button.btn.btn-lg.btn-primary.btn-block(type="submit") Create Event
   .col-md-6
