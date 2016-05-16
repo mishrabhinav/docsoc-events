@@ -18,7 +18,7 @@
       }).
       when('/post', {
         templateUrl: 'partials/post',
-        controller: 'eventsCtrl'
+        controller: 'eventCtrl'
       }).
       when('/login', {
         templateUrl: 'partials/login',
